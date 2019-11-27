@@ -31,6 +31,30 @@ composer require peal/laravel-social-login
 
 Composer will automatically download all dependencies.
 
+```php
+$ php artisan vendor:publish
+
+ Which provider or tag's files would you like to publish?:
+  [0 ] Publish files from all providers and tags listed below
+  [1 ] Provider: Facade\Ignition\IgnitionServiceProvider
+  [2 ] Provider: Fideloper\Proxy\TrustedProxyServiceProvider
+  [3 ] Provider: Illuminate\Foundation\Providers\FoundationServiceProvider
+  [4 ] Provider: Illuminate\Mail\MailServiceProvider
+  [5 ] Provider: Illuminate\Notifications\NotificationServiceProvider
+  [6 ] Provider: Illuminate\Pagination\PaginationServiceProvider
+  [7 ] Provider: Laravel\Tinker\TinkerServiceProvider
+  [8 ] Provider: peal\socialLogin\LoginServiceProvider
+  [9 ] Tag: flare-config
+  [10] Tag: ignition-config
+  [11] Tag: laravel-errors
+  [12] Tag: laravel-mail
+  [13] Tag: laravel-notifications
+  [14] Tag: laravel-pagination
+ > 8
+
+
+```
+
 #### For Laravel
 
 After complete the installation, open your app.php from config folder, paste below line inside providers array 
