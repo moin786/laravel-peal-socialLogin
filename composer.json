@@ -1,0 +1,37 @@
+{
+    "name": "peal/laravel-social-login",
+    "description": "Laravel social login through facebook,google,github",
+    "type": "library",
+    "keywords":["laravel","social login","login","facebook login","google login","github login"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohammed Minuddin(Peal)",
+            "email": "moinuddin7@gmail.com"
+        }
+    ],
+     "autoload": {
+        "psr-4": {
+            "peal\\socialLogin\\":"src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "peal\\socialLogin\\LoginServiceProvider"
+            ],
+            "aliases": {
+                "FacebookLogin": "peal\\socialLogin\\Facades\\FacebookLogin",
+                "GoogleLogin": "peal\\socialLogin\\Facades\\GoogleLogin",
+                "GithubLogin": "peal\\socialLogin\\Facades\\GithubLogin"
+            }
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "laravel/framework": "5.2.*|5.6.*|5.7.*|5.8.*|6.*",
+        "facebook/graph-sdk": "^5.6",
+        "google/apiclient": "^2.3",
+        "guzzlehttp/guzzle": "~6.0"
+    }
+}
