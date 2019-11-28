@@ -1,26 +1,10 @@
 # laravel-social-login 
 
 <h1 align="center">Laravel social OAuth2 login using google,facebook and github </h1>
-
-<p align="center">
+<p>
 Using this package you can login with facebook, google and github, just create an app with facebook, google and github and setup your clientid,appid,clientsecret into your configuration file, after that setup clientid and client_secret into your application .env file .
 
-```shell
-#Facebook Login
-FACEBOOK_APP_ID=
-FACEBOOK_APP_SECRET=
-
-#Google Login
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
-
-#Github Login
-GITHUB_CLIENT_ID=
-GITHUB_CLIENT_SECRET=
-
-```
 </p>
-
 ## Installation
 
 Inside your project root directory, open your terminal
@@ -29,7 +13,8 @@ Inside your project root directory, open your terminal
 composer require peal/laravel-social-login
 ```
 
-Composer will automatically download all dependencies.
+Composer will automatically download laravel-social-login, then run below command from your command prompt running from project root, then socialConfig.php file will be placed into application config folder.
+
 
 ```php
 $ php artisan vendor:publish
@@ -54,10 +39,65 @@ $ php artisan vendor:publish
 
 
 ```
+<p>
+Openup your socialConfig.php file inside config folder and your call_back_url or redirect_url
+
+```php
+return [
+    'facebook' => [
+        'app_id' => env('FACEBOOK_APP_ID'), //Don't change
+        'app_secret' => env('FACEBOOK_APP_SECRET'), //Don't change
+        'default_graph_version' => 'v2.6',
+        'call_back_url' => 'http://localhost:8000/facebook-success', //Change your production call back url
+        'scope' => [
+            'email'
+        ]
+    ],
+    'google' => [
+        'application_name' => 'your-application-name',
+        'client_id' => env('GOOGLE_CLIENT_ID'), //Don't change
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'), //Don't change
+        'redirect_url' => 'http://localhost:8000/google-success', //Change your production redirect url
+        'scope' => [
+            'https://www.googleapis.com/auth/plus.me',
+            'https://www.googleapis.com/auth/userinfo.email',
+            'https://www.googleapis.com/auth/userinfo.profile',
+        ]
+    ],
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'), //Don't change
+        'client_secret' => env('GITHUB_CLIENT_SECRET'), //Don't change
+        'authorize_url' => 'https://github.com/login/oauth/authorize',
+        'token_url' => 'https://github.com/login/oauth/access_token',
+        'api_url_base' => 'https://api.github.com/',
+        'call_back_url' => 'http://localhost:8000/gitloginsuccess' //Change your production call back url
+    ],
+];
+```
+</p>
+
+### Put below environment variable inside .env file
+<p align="center">
+
+```shell
+#Facebook Login
+FACEBOOK_APP_ID=
+FACEBOOK_APP_SECRET=
+
+#Google Login
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+#Github Login
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+
+```
+</p>
 
 #### For Laravel
 
-After complete the installation, open your app.php from config folder, paste below line inside providers array 
+After complete the installation, open your app.php from config folder, paste below line inside providers array, if you are using old laravel version. 
 
 ```php
 peal\socialLogin\LoginServiceProvider::class,
