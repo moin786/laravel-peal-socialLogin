@@ -244,7 +244,7 @@ class GoogleLogin {
 
             Session::put('google_access_token', $token['access_token']);
 
-            return $token['google_access_token'];
+            return $token['access_token'];
         } 
         
         throw new \Exception('Authenticate code missing');
